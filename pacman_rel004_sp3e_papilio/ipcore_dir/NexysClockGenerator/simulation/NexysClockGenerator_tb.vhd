@@ -98,10 +98,10 @@ architecture test of NexysClockGenerator_tb is
   signal CLK_OUT : std_logic_vector(2 downto 1);
 --Freq Check using the M & D values setting and actual Frequency generated
   signal period1 : time := 0 ps;
-constant  ref_period1_clkin1 : time := (10.000*4*72.000/35.375)*1000 ps;
+constant  ref_period1_clkin1 : time := (10.000*5*23.500/57.750)*1000 ps;
    signal prev_rise1 : time := 0 ps;
   signal period2 : time := 0 ps;
-constant  ref_period2_clkin1 : time := (10.000*4*36/35.375)*1000 ps;
+constant  ref_period2_clkin1 : time := (10.000*5*47/57.750)*1000 ps;
    signal prev_rise2 : time := 0 ps;
 
 component NexysClockGenerator_exdes
