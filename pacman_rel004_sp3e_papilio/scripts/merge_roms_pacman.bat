@@ -27,7 +27,9 @@ REM Bit file to merge the ROMs into. Uncomment the bit file for the Papilio Arca
 REM This is for the papilio Logic with LX9 chip
 REM set bit_file=pacman_hardware_papilio_logic_lx9
 REM this is for the Papilio One with 500K chip
-set bit_file=pacman_hardware_p1_500K
+REM set bit_file=pacman_hardware_p1_500K
+REM Nexys 4 version...
+set bit_file=pacman_nexys4
 
 set output_bitfile=pacman_on_%bit_file%.bit
 

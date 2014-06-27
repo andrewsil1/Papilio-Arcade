@@ -1,0 +1,52 @@
+# UCF file for the Digilent Nexys4
+
+
+
+NET OSC_IN           LOC = "E3"	| IOSTANDARD = "LVCMOS33";              # CLK
+NET "OSC_IN" TNM_NET = sys_clk_pin;
+TIMESPEC TS_sys_clk_pin = PERIOD sys_clk_pin 100 MHz HIGH 50%;
+
+##########Uncomment this section for the Papilio Arcade MegaWing ##########################################
+# original bits
+NET O_VIDEO_R(3)                LOC = "A4"	| IOSTANDARD = "LVCMOS33"| DRIVE = 8 | SLEW = FAST ;
+NET O_VIDEO_G(3)                LOC = "A6"	| IOSTANDARD = "LVCMOS33"| DRIVE = 8 | SLEW = FAST ;
+NET O_VIDEO_B(3)                LOC = "D8"	| IOSTANDARD = "LVCMOS33"| DRIVE = 8 | SLEW = FAST ;
+# extra bits
+NET O_VIDEO_B(2)                LOC = "D7"	| IOSTANDARD = "LVCMOS33"| DRIVE = 8 | SLEW = FAST ;
+NET O_VIDEO_B(1)                LOC = "C7"	| IOSTANDARD = "LVCMOS33"| DRIVE = 8 | SLEW = FAST ; 
+NET O_VIDEO_B(0)                LOC = "B7"	| IOSTANDARD = "LVCMOS33"| DRIVE = 8 | SLEW = FAST ; 
+NET O_VIDEO_G(2)                LOC = "B6"	| IOSTANDARD = "LVCMOS33"| DRIVE = 8 | SLEW = FAST ; 
+NET O_VIDEO_G(1)                LOC = "A5"	| IOSTANDARD = "LVCMOS33"| DRIVE = 8 | SLEW = FAST ;
+NET O_VIDEO_G(0)                LOC = "C6"	| IOSTANDARD = "LVCMOS33"| DRIVE = 8 | SLEW = FAST ;
+NET O_VIDEO_R(2)                LOC = "C5"	| IOSTANDARD = "LVCMOS33"| DRIVE = 8 | SLEW = FAST ; 
+NET O_VIDEO_R(1)                LOC = "B4"	| IOSTANDARD = "LVCMOS33"| DRIVE = 8 | SLEW = FAST ; 
+NET O_VIDEO_R(0)                LOC = "A3"	| IOSTANDARD = "LVCMOS33"| DRIVE = 8 | SLEW = FAST ; 
+
+NET O_HSYNC                     LOC = "B11"	| IOSTANDARD = "LVCMOS33"| DRIVE = 8 | SLEW = FAST ;
+NET O_VSYNC                     LOC = "B12"	| IOSTANDARD = "LVCMOS33"| DRIVE = 8 | SLEW = FAST ;
+
+# Switches
+NET I_SW(3)                     LOC = "U8"	| IOSTANDARD = "LVCMOS33";	#	SW1 - Start 2
+NET I_SW(2)                     LOC = "R7"	| IOSTANDARD = "LVCMOS33";	#	SW2 - Coin 1
+NET I_SW(1)                     LOC = "R6"	| IOSTANDARD = "LVCMOS33";	#	SW3 - Coin 2
+NET I_SW(0)                     LOC = "U9"	| IOSTANDARD = "LVCMOS33";	#	SW0 - Start 1
+
+# Directional buttons
+NET "I_JOYSTICK_A(0)"           LOC = "F15"	| IOSTANDARD = "LVCMOS33"; # 	Up
+NET "I_JOYSTICK_A(2)"           LOC = "T16"	| IOSTANDARD = "LVCMOS33"; # 	Left	
+NET "I_JOYSTICK_A(3)"           LOC = "R10"	| IOSTANDARD = "LVCMOS33"; # 	Right	
+NET "I_JOYSTICK_A(1)"           LOC = "V10"	| IOSTANDARD = "LVCMOS33"; # 	Down 	
+NET "I_JOYSTICK_A(4)"           LOC = "E16"	| IOSTANDARD = "LVCMOS33"; # 	Fire 
+
+# No real use for the LED's
+#NET O_LED(3)                    LOC = "P35" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = FAST ;
+#NET O_LED(2)                    LOC = "P66" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = FAST ;
+NET O_LED(1)                    LOC = "V9"	| IOSTANDARD = "LVCMOS33";	# P2 Start Lamp
+NET O_LED(0)                    LOC = "T8"	| IOSTANDARD = "LVCMOS33";	# P1 Start Lamp
+
+NET I_RESET                     LOC = "C12"	| IOSTANDARD = "LVCMOS33"; # 
+
+NET O_AUDIO_L                   LOC = "A11"	| IOSTANDARD = "LVCMOS33";	#
+#NET O_AUDIO_R                   LOC = "P100"  | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8;	#
+NET O_AUDIO_SD_N						LOC = "D12" | IOSTANDARD = "LVCMOS33";
+##########End of Section for Papilio Arcade MegaWing ###############################################

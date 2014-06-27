@@ -62,15 +62,16 @@ entity PACMAN is
     O_VSYNC               : out   std_logic;
     --
     O_AUDIO_L             : out   std_logic;
-    O_AUDIO_R             : out   std_logic;
+--  O_AUDIO_R             : out   std_logic;
+	 O_AUDIO_SD_N			  : out   std_logic := '1'; -- Enable audio amplifier
     --
 	 I_JOYSTICK_A            : in    std_logic_vector(4 downto 0);
-	 I_JOYSTICK_B            : in    std_logic_vector(4 downto 0);
-	 JOYSTICK_A_GND			 : out	 std_logic;
-	 JOYSTICK_B_GND			 : out	 std_logic;
+--	 I_JOYSTICK_B            : in    std_logic_vector(4 downto 0);
+--	 JOYSTICK_A_GND			 : out	 std_logic;
+--	 JOYSTICK_B_GND			 : out	 std_logic;
 	 
     I_SW                  : in    std_logic_vector(3 downto 0); -- active high
-    O_LED                 : out   std_logic_vector(2 downto 0);
+    O_LED                 : out   std_logic_vector(1 downto 0); --(2 downto 0);
     --
     I_RESET               : in    std_logic;
     OSC_IN                : in    std_logic
@@ -176,17 +177,19 @@ architecture RTL of PACMAN is
     signal scan_converter_mode        : std_logic;
 
 
+
 begin
-  I_RESET_L <= not I_RESET;
+  I_RESET_L <= I_RESET;
 --  I_RESET_L <= '1';
   
-  joystick_reg <= I_JOYSTICK_A and I_JOYSTICK_B;
-  JOYSTICK_A_GND <= '0';
-  JOYSTICK_B_GND <= '0';
+  joystick_reg <= not I_JOYSTICK_A; --and I_JOYSTICK_B;
+--  JOYSTICK_A_GND <= '0';
+-- JOYSTICK_B_GND <= '0';
   
   --
   -- clocks
   --
+   
   u_clocks : entity work.PACMAN_CLOCKS
     port map (
       I_CLK_REF  => OSC_IN,
@@ -524,7 +527,7 @@ begin
 
 	O_LED(0) <= control_reg(4);	-- P1 Start Lamp
 	O_LED(1) <= control_reg(5);	-- P2 Start Lamp	
-	O_LED(2) <= control_reg(3);	-- Flipped
+--	O_LED(2) <= control_reg(3);	-- Flipped
 
   p_control_reg : process
     variable ena : std_logic_vector(7 downto 0);
@@ -741,7 +744,7 @@ begin
     );
 
   O_AUDIO_L <= audio_pwm;
-  O_AUDIO_R <= audio_pwm;
+--  O_AUDIO_R <= audio_pwm;
 
   button_in(8 downto 5) <= I_SW(3 downto 0);
   button_in(4 downto 0) <= joystick_reg(4 downto 0);
@@ -784,7 +787,7 @@ begin
       in1_reg(7) <= '1'; 							-- table 1-upright 0-cocktail
       in1_reg(6) <= not button_debounced(8); -- start2		RIGHT PushButton
       in1_reg(5) <= not button_debounced(5); -- start1		LEFT PushButton
-      in1_reg(4) <= button_debounced(4);		-- test and fire	
+      in1_reg(4) <= button_debounced(4);	-- test and fire	
       in1_reg(3) <= button_debounced(1);		-- p2 down
       in1_reg(2) <= button_debounced(3); 		-- p2 right
       in1_reg(1) <= button_debounced(2); 		-- p2 left

@@ -1,0 +1,2 @@
+vhdl work ../../NexysClockGenerator.vhd
+vhdl work ../example_design/NexysClockGenerator_exdes.vhd
