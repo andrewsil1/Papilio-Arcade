@@ -1,0 +1,8 @@
+*.bin
+pacman_rel004_sp3e_papilio/build/prom7_dst.vhd
+pacman_rel004_sp3e_papilio/build/prom4_dst.vhd
+pacman_rel004_sp3e_papilio/build/prom1_dst.vhd
+pacman_rel004_sp3e_papilio/build/main.bin
+pacman_rel004_sp3e_papilio/build/gfx1.bin
+pacman_rel004_sp3e_papilio/build/gfx1.vhd
+pacman_rel004_sp3e_papilio/build/main.bin
